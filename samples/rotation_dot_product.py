@@ -17,7 +17,7 @@ rotation_matrix = rotationMatrix(45)
 
 v2 = rotation_matrix.dot(v1)
 
-plt.arrow(0,0,v1[0,0],v1[1,0], head_width=0.8, head_length=0.8, color = 'b')
-plt.arrow(0,0,v2[0,0],v2[1,0],head_width=0.8, head_length=0.8, color = 'r')
+plt.arrow(0,0,v1[0,0],v1[1,0], head_width=0.4, head_length=0.8, color = 'b')
+plt.arrow(0,0,v2[0,0],v2[1,0],head_width=0.4, head_length=0.8, color = 'r')
 plt.axis([-5,5,0,10])
 plt.show()
