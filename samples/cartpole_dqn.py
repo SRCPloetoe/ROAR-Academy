@@ -1,11 +1,3 @@
-## This is course material for Introduction to Modern Artificial Intelligence
-## Example code: cartpole_dqn.py
-## Author: Allen Y. Yang
-##
-## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
-
-# Please make sure to install openAI gym module
-# https://github.com/openai/gym
 import random
 import gym
 import os
@@ -78,18 +70,18 @@ if __name__ == "__main__":
     batch_size = 32
 
     for e in range(EPISODES):
-        state = env.reset()
+        state, _ = env.reset()  # Unpack the tuple returned by env.reset()
         state = np.reshape(state, [1, state_size])
         for time in range(500):
             # env.render()
             action = agent.act(state)
-            next_state, reward, done, _ = env.step(action)
+            next_state, reward, done, truncated, _ = env.step(action)  # Unpack the 5 values returned by env.step()
             env.render()
             reward = reward if not done else -10
             next_state = np.reshape(next_state, [1, state_size])
             agent.remember(state, action, reward, next_state, done)
             state = next_state
-            if done:
+            if done or truncated:  # Check both done and truncated
                 print("episode: {}/{}, score: {}, e: {:.2}"
                       .format(e, EPISODES, time, agent.epsilon))
                 break

@@ -17,9 +17,9 @@ class Vehicle2D(object):
         self.y = 0.0
         self.orientation = 0.0
         self.length = length
-        self.steering_noise = 0.0
-        self.distance_noise = 0.0
-        self.steering_drift = 0.0
+        self.steering_noise = 0.1
+        self.distance_noise = 0.1
+        self.steering_drift = 0.1
 
     def set(self, x, y, orientation):
         """
